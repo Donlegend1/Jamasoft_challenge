@@ -49,6 +49,8 @@ class WebsiteController extends Controller
             ]);
 
             $request->merge(['user_id' => $request->user()->id]);
+            
+            //begin transaction
             DB::beginTransaction();
 
             $website = Website::create($request->only('name', 'url', 'description', 'user_id'));
